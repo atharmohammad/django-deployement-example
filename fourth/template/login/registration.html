@@ -1,0 +1,17 @@
+﻿{% extends 'login\base.html' %}
+{% load static %}
+{% block body_block %}
+    <div class="jumbotron">
+        {% if registered %}
+            <h1>Thank You !</h1>
+        {% else %}
+            <h2>Fill Out the Form :</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        {%endif%}
+    </div>
+{% endblock %}
